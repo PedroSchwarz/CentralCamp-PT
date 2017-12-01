@@ -11,6 +11,12 @@ var methodOverride = require("method-override"),
     
 // MODELOS config    
 var User = require("./models/user");
+
+// ROTAS setup
+var indexRoutes = require("./routes/index");
+var userRoutes = require("./routes/users");
+var campgroundsRoutes = require("./routes/campgrounds");
+var commentsRoutes = require("./routes/comments");
     
 // MONGOOSE config
 mongoose.Promise = global.Promise;
@@ -36,6 +42,10 @@ app.use(function(req, res, next){
     res.locals.currentUser = req.user;
     next();
 });
+app.use("/", indexRoutes);
+app.use("/", userRoutes);
+app.use("/campgrounds", campgroundsRoutes);
+app.use("/campgrounds/:id/comments", commentsRoutes);
 
 // EJS config
 app.set("view engine", "ejs");
