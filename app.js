@@ -31,7 +31,8 @@ passport.deserializeUser(User.deserializeUser());
 // APP(EXPRESS) config
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(connectFlash());
-app.use(methodOverride(__dirname + "/public"));
+app.use(express.static(__dirname + "/public"));
+app.use(methodOverride("_method"));
 app.use(expressSession({
     secret: "Secredo para o projeto YelpCamp-PT",
     resave: false,
@@ -41,6 +42,8 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(function(req, res, next){
     res.locals.currentUser = req.user;
+    res.locals.failure = req.flash("failure");
+    res.locals.success = req.flash("success");
     next();
 });
 app.locals.moment = moment;

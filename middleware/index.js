@@ -1,6 +1,6 @@
 // MODELOS config
-var Campground = require("../models/Campground");
-var Comment = require("../models/Comment");
+var Campground = require("../models/campground");
+var Comment = require("../models/comment");
 
 var middlewareObj = {};
 
@@ -50,5 +50,6 @@ middlewareObj.checkCommentOwner = function(req, res, next){
     }
 }
 
+module.exports = middlewareObj;
 
 

@@ -1,0 +1,14 @@
+#comments-card {
+    background-color: rgb(240, 240, 240);
+    margin-bottom: 50px;
+}
+
+.delete-form {
+    display: inline;
+}
+
+#map {
+    margin-top: 20px;
+    height: 400px;
+    width: 100%;
+}
