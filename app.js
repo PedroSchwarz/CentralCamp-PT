@@ -20,12 +20,12 @@ var commentsRoutes = require("./routes/comments");
     
 // MONGOOSE config
 mongoose.Promise = global.Promise;
-mongoose.connect("mongodb://localhost/yelp_camp_pt", {useMongoCliente: true});
+mongoose.connect("mongodb://localhost/yelp_camp_pt", {useMongoClient: true});
 
 // PASSPORT config
 passport.use(new LocalStrategy(User.authenticate()));
-passport.serializeUser(User.serializaUser());
-passport.deserializeUser(User.deserializaUser());
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
 
 // APP(EXPRESS) config
 app.use(bodyParser.urlencoded({extended: true}));
@@ -43,7 +43,7 @@ app.use(function(req, res, next){
     next();
 });
 app.use("/", indexRoutes);
-app.use("/", userRoutes);
+app.use("/users", userRoutes);
 app.use("/campgrounds", campgroundsRoutes);
 app.use("/campgrounds/:id/comments", commentsRoutes);
 
