@@ -2,6 +2,9 @@ var geocoder = require("geocoder"),
     express = require("express"),
     router = express.Router();
     
+// MIDDLEWARE config
+var middleware = require("../middleware");
+    
 // MODELOS config
 var Campground = require("../models/campground");
 
@@ -17,13 +20,13 @@ router.get("/", function(req, res){
 });
 
 // NEW
-router.get("/new", function(req, res){
+router.get("/new", middleware.isLoggedIn, function(req, res){
     res.render("campgrounds/new");
 });
 
 // CREATE
-router.post("/", function(req, res){
-    geocoder.geocode(req.body.location, function(err, data){
+router.post("/", middleware.isLoggedIn, function(req, res){
+    geocoder.geocode(req.body.campground.location, function(err, data){
         var lat = data.results[0].geometry.location.lat;
         var lng = data.results[0].geometry.location.lng;
         var location = data.results[0].formatted_address;
@@ -63,7 +66,7 @@ router.get("/:id", function(req, res){
 });
 
 // EDIT
-router.get("/:id/edit", function(req, res) {
+router.get("/:id/edit", middleware.checkCampgroundOwner, function(req, res) {
     var id = req.params.id;
     Campground.findById(id, function(err, campground){
         if(err || !campground){
@@ -75,7 +78,7 @@ router.get("/:id/edit", function(req, res) {
 });
 
 // UPDATE
-router.put("/:id", function(req, res){
+router.put("/:id", middleware.checkCampgroundOwner, function(req, res){
     var id = req.params.id;
     geocoder.geocode(req.body.campground.location, function(err, data){
         var lat = data.results[0].geometry.location.lat;
@@ -96,7 +99,7 @@ router.put("/:id", function(req, res){
 });
 
 // DESTROY
-router.delete("/:id", function(req, res){
+router.delete("/:id", middleware.checkCampgroundOwner, function(req, res){
     var id = req.params.id;
     Campground.findByIdAndRemove(id, function(err){
         if(err){

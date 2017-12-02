@@ -6,6 +6,7 @@ var methodOverride = require("method-override"),
     bodyParser = require("body-parser"),
     passport = require("passport"),
     mongoose = require("mongoose"),
+    moment = require("moment"),
     express = require("express"),
     app = express();
     
@@ -32,7 +33,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(connectFlash());
 app.use(methodOverride(__dirname + "/public"));
 app.use(expressSession({
-    secret: "Este e o secredo para o projeto YelpCamp-PT",
+    secret: "Secredo para o projeto YelpCamp-PT",
     resave: false,
     saveUninitialized: false
 }));
@@ -42,6 +43,7 @@ app.use(function(req, res, next){
     res.locals.currentUser = req.user;
     next();
 });
+app.locals.moment = moment;
 app.use("/", indexRoutes);
 app.use("/users", userRoutes);
 app.use("/campgrounds", campgroundsRoutes);
