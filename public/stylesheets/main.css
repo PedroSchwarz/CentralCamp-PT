@@ -8,6 +8,14 @@ body {
     color: #fff;
 }
 
+.col-lg-12.text-center h1 {
+    margin-bottom: 40px;
+}
+
+.card.border-secondary {
+    margin-bottom: 20px;
+}
+
 .row h1 {
     color: #fff;
 }
@@ -21,7 +29,7 @@ h4.card-title {
 }
 
 .jumbotron {
-    background-color: rgba(100, 100, 100, 0.6);
+    background-color: rgba(100, 100, 100, 0.4);
     color: #fff;
 }
 
@@ -35,7 +43,35 @@ h4.card-title {
 }
 
 #map {
-    margin-top: 20px;
+    margin: 20px 0;
     height: 400px;
     width: 100%;
+}
+
+@media only screen and (max-width: 767px) {
+    body {
+        background-image: url("https://upload.wikimedia.org/wikipedia/commons/4/4f/Matterhorn_Riffelsee_2005-06-11.jpg");
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+    
+    h1 {
+        font-size: 30px;
+    }
+    
+    h3 {
+        font-size: 20px;
+    }
+    
+    h4 {
+        font-size: 16px;
+    }
+    
+    p em {
+        font-size: 14px;
+    }
+    
+    .jumbotron {
+        background-color: rgba(150, 150, 150, 0.8);
+    }
 }
