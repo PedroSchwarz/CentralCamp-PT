@@ -1,5 +1,32 @@
+body {
+    background-image: url("https://upload.wikimedia.org/wikipedia/commons/d/d1/Mount_Everest_as_seen_from_Drukair2_PLW_edit.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.lead {
+    color: #fff;
+}
+
+.row h1 {
+    color: #fff;
+}
+
+h4.card-title {
+    color: rgb(25, 100, 240);
+}
+
+#divider-h3 {
+    color: #fff;
+}
+
+.jumbotron {
+    background-color: rgba(100, 100, 100, 0.6);
+    color: #fff;
+}
+
 #comments-card {
-    background-color: rgb(240, 240, 240);
+    background-color: rgb(210, 210, 210);
     margin-bottom: 50px;
 }
 
