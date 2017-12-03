@@ -21,7 +21,7 @@ router.post("/", function(req, res){
             res.redirect("/users/new");
         } else {
             passport.authenticate("local")(req, res, function(){
-                req.flash("success", "Bem-vindo to YelpCamp " + user.username);
+                req.flash("success", "Bem-vindo to CentralCamp " + user.username);
                 res.redirect("/campgrounds");
             });
         }
